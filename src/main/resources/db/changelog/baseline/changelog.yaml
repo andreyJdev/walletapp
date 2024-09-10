@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: 001_create_wallet_table.xml
+      relativeToChangelogFile: true
+  - include:
+      file: 002_change_wallet_table.xml
+      relativeToChangelogFile: true
