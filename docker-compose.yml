@@ -1,0 +1,35 @@
+services:
+  walletapp:
+    image: walletapp
+    container_name: walletapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgre
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgre:5432/wallet
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - wallets
+  
+  postgre:
+    image: postgres:15-alpine
+    container_name: postgre
+    volumes:
+      - pgdataforwallet:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: wallet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - wallets
+
+networks:
+  wallets:
+    driver: bridge
+
+volumes:
+  pgdataforwallet:
