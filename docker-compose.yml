@@ -1,6 +1,8 @@
 services:
   walletapp:
-    image: walletapp
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: walletapp
     ports:
       - "8080:8080"
