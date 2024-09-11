@@ -62,8 +62,7 @@ Amazon Coretto 17 JDK, Spring Boot 3, Postgresql 15.
 
 
 5. Приложение и база данных запускаются в Docker контейнере, все система поднимается с помощью docker-compose. Предварительно нужно собрать docker образ командой docker
-```dockerfile
-docker build -t walletapp .
-```
+```docker build -t walletapp .```
+
 
 6. Предусмотрена возможность настройки параметров базы данных через docker-compose.yml без пересборки контейнеров. Все изменения в базе данных сохраняются при повторном запуске образов.
