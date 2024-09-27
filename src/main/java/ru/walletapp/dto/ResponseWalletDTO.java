@@ -13,5 +13,6 @@ import java.util.UUID;
 public class ResponseWalletDTO {
 
     private UUID walletId;
+
     private BigDecimal balance;
 }

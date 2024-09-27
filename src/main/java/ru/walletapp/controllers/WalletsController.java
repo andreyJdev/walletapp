@@ -2,7 +2,6 @@ package ru.walletapp.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.MessageSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -10,10 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.walletapp.dto.RequestWalletDTO;
 import ru.walletapp.dto.ResponseWalletDTO;
 import ru.walletapp.services.WalletsService;
-import ru.walletapp.utils.InvalidJsonException;
 import ru.walletapp.utils.NotFoundWalletException;
 
-import java.util.Locale;
 import java.util.UUID;
 
 @RestController
@@ -31,9 +28,15 @@ public class WalletsController {
     }
 
     @PostMapping("wallet")
-    public ResponseEntity<ResponseWalletDTO> updateWallet(@RequestBody RequestWalletDTO request) {
-        ResponseWalletDTO response = this.walletsService.performOperation(request);
+    public ResponseEntity<ResponseWalletDTO> updateWallet(@RequestBody @Valid RequestWalletDTO request,
+                                                          BindingResult bindingResult) throws BindException {
+        if (bindingResult.hasErrors()) {
+            if (bindingResult instanceof BindException e)
+                throw e;
+            throw new BindException(bindingResult);
+        }
 
+        ResponseWalletDTO response = this.walletsService.updateBalance(request);
         return ResponseEntity.ok().body(response);
     }
 }
