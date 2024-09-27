@@ -6,22 +6,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@NoArgsConstructor
 @Entity
-@Table(name = "Wallet")
+@Table(name = "wallet")
 public class Wallet {
+
     @Id
-    @Column(name = "wallet_id")
+    @Column(name = "walletId")
     private UUID walletId;
 
-    @Column(name = "amount")
-    private String amount;
+
+    @Column(name = "balance")
+    private String balance;
 }

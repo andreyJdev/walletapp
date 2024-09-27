@@ -1,5 +1,6 @@
 package ru.walletapp.enums;
 
 public enum OperationType {
-    DEPOSIT, WITHDRAW
+    DEPOSIT,
+    WITHDRAW
 }

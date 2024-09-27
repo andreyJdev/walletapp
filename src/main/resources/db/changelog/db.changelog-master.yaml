@@ -1,8 +1,0 @@
-property:
-  name: now
-  dbms: postgresql
-  value: now()
-databaseChangeLog:
-  - include:
-      file: baseline/changelog.yaml
-      relativeToChangelogFile: true
