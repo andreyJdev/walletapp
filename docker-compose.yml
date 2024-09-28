@@ -1,19 +1,19 @@
 services:
-#  wallet_app:
-#    build:
-#      context: .
-#      dockerfile: ./docker/app/Dockerfile
-#    container_name: wallet_app
-#    ports:
-#      - "8081:8080"
-#    depends_on:
-#      - postgres_db
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/wallets
-#      - SPRING_DATASOURCE_USERNAME=postgres
-#      - SPRING_DATASOURCE_PASSWORD=postgres
-#    networks:
-#      - wallets
+  wallet_app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    container_name: wallet_app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres_db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/wallets
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - wallets
   
   postgres_db:
     build:

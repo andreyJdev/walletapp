@@ -34,7 +34,7 @@ public class WalletsServiceImpl implements WalletsService {
     @Transactional(readOnly = false)
     public ResponseWalletDTO updateBalance(RequestWalletDTO request) {
         Wallet wallet = this.walletsRepository
-                .findWalletByWalletIdWithLock(request.getWalletId())
+                .findWalletByWalletIdWithLock(UUID.fromString(request.getWalletId()))
                 .orElseThrow(() -> new NotFoundWalletException("walletapp.errors.wallet.not_found"));
 
         BigDecimal currentBalance = new BigDecimal(wallet.getBalance());

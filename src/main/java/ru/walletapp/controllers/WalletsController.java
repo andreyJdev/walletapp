@@ -22,6 +22,7 @@ public class WalletsController {
 
     @GetMapping("wallets/{walletId}")
     public ResponseEntity<ResponseWalletDTO> getWallet(@PathVariable UUID walletId) {
+
         ResponseWalletDTO response = this.walletsService.findWalletById(walletId)
                 .orElseThrow(() -> new NotFoundWalletException("walletapp.errors.wallet.not_found"));
         return ResponseEntity.ok().body(response);
@@ -31,8 +32,6 @@ public class WalletsController {
     public ResponseEntity<ResponseWalletDTO> updateWallet(@RequestBody @Valid RequestWalletDTO request,
                                                           BindingResult bindingResult) throws BindException {
         if (bindingResult.hasErrors()) {
-            if (bindingResult instanceof BindException e)
-                throw e;
             throw new BindException(bindingResult);
         }
 

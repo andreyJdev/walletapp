@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface WalletsService {
+
     Optional<ResponseWalletDTO> findWalletById(UUID walletId);
 
     ResponseWalletDTO updateBalance(RequestWalletDTO request);

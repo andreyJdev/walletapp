@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class WalletsMapper {
 
     public ResponseWalletDTO walletToResponse(Wallet wallet) {
+
         ResponseWalletDTO response = new ResponseWalletDTO();
         response.setWalletId(wallet.getWalletId());
         response.setBalance(new BigDecimal(wallet.getBalance()));
